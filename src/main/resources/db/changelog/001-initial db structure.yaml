@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: create-table-user
+      id: create-table-url
       author: igor.bonny@gmail.com
       preConditions:
         - onFail: MARK_RAN
