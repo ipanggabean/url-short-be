@@ -62,11 +62,9 @@ Response:
     {"content":[{"alias":"dab1105e","url":"https://twelve.com/","expired_time":"2022-06-23T15:39:23","hit":0},{"alias":"0669d834","url":"https://two.com/","expired_time":"2022-06-23T15:38:42","hit":0}],"pageable":{"sort":{"sorted":true,"unsorted":false,"empty":false},"offset":0,"pageSize":3,"pageNumber":0,"unpaged":false,"paged":true},"last":true,"totalElements":2,"totalPages":1,"size":3,"number":0,"sort":{"sorted":true,"unsorted":false,"empty":false},"first":true,"numberOfElements":2,"empty":false}
 
 Parameters:
+| Params | Usage                                                                                               | Info                               |
 | page   | default 0, start from 0                                                                             | Define the page you want to open   |
-|--------|-----------------------------------------------------------------------------------------------------|------------------------------------|
 | size   | default 5                                                                                           | Max data count in 1 page           |
-|--------|-----------------------------------------------------------------------------------------------------|------------------------------------|
 | sort   | must use known json field, default direction ASC. Specify the direction by adding ",asc" or ",desc" | The sorting attribute for the data |
-|--------|-----------------------------------------------------------------------------------------------------|------------------------------------|
 | search | url to be search. Will search for url containing the specified substring                            |                                    |
 
