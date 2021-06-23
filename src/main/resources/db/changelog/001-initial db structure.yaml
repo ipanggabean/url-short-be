@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-user
+      author: igor.bonny@gmail.com
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: user_details
+      changes:
+        - createTable:
+            tableName: url_store
+            columns:
+              - column:
+                  name: id
+                  type: VARCHAR(100)
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: url
+                  type: VARCHAR(250)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: hit
+                  type: SMALLINT
+                  defaultValue: 0
+              - column:
+                  name: expired_time
+                  type: datetime
+              - column:
+                  name: is_active
+                  type: boolean
+              - column:
+                  name: modified_time
+                  type: datetime
