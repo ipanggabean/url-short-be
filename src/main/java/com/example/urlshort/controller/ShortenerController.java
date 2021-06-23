@@ -33,7 +33,10 @@ public class ShortenerController {
     @GetMapping("/{id}")
     public ResponseEntity getUrl(@PathVariable final String id) {
         // Get from DB
-        final UrlStore urlStore = urlShortenerService.getActiveById(id);
+        UrlStore urlStore = urlShortenerService.getActiveById(id);
+
+        // increment the counter with the hit
+        urlStore = urlShortenerService.increaseHit(urlStore);
 
         return ResponseEntity.ok(urlStore.getUrl());
     }

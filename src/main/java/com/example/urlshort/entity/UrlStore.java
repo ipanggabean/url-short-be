@@ -30,4 +30,8 @@ public class UrlStore {
 
     @UpdateTimestamp
     private LocalDateTime modifiedTime;
+
+    public void increaseHit() {
+        this.hit = this.hit + 1;
+    }
 }

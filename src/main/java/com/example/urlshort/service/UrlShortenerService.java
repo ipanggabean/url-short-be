@@ -33,6 +33,11 @@ public class UrlShortenerService {
                 .orElseThrow(() -> new RuntimeException("Shortened URL is not valid"));
     }
 
+    public UrlStore increaseHit(UrlStore urlStore) {
+        urlStore.increaseHit();
+        return urlStoreRepository.save(urlStore);
+    }
+
     private UrlStore make(@NonNull String url) {
         return UrlStore.builder()
                 .id(HashingUtil.hash(url))
