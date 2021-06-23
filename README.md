@@ -63,6 +63,7 @@ Response:
 
 Parameters:
 | Params | Usage                                                                                               | Info                               |
+|--------|-----------------------------------------------------------------------------------------------------|------------------------------------|
 | page   | default 0, start from 0                                                                             | Define the page you want to open   |
 | size   | default 5                                                                                           | Max data count in 1 page           |
 | sort   | must use known json field, default direction ASC. Specify the direction by adding ",asc" or ",desc" | The sorting attribute for the data |
