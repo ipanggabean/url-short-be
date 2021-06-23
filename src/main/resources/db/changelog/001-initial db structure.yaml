@@ -31,6 +31,7 @@ databaseChangeLog:
               - column:
                   name: is_active
                   type: boolean
+                  defaultValue: true
               - column:
                   name: modified_time
                   type: datetime
