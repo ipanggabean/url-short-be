@@ -1,6 +1,7 @@
 package com.example.urlshort.service;
 
 import com.example.urlshort.entity.UrlStore;
+import com.example.urlshort.exception.ShortURLInvalidException;
 import com.example.urlshort.repository.UrlStoreRepository;
 import com.example.urlshort.util.HashingUtil;
 import lombok.NonNull;
@@ -30,7 +31,7 @@ public class UrlShortenerService {
         return urlStoreRepository.findById(id)
                 .filter(UrlStore::isActive)
                 .filter(urlStore -> urlStore.getExpiredTime().isAfter(LocalDateTime.now()))
-                .orElseThrow(() -> new RuntimeException("Shortened URL is not valid"));
+                .orElseThrow(() -> new ShortURLInvalidException("Shortened URL is not valid"));
     }
 
     public UrlStore increaseHit(UrlStore urlStore) {

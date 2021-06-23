@@ -1,6 +1,7 @@
 package com.example.urlshort.controller;
 
 import com.example.urlshort.entity.UrlStore;
+import com.example.urlshort.exception.InvalidURLException;
 import com.example.urlshort.service.UrlShortenerService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.validator.routines.UrlValidator;
@@ -21,7 +22,7 @@ public class ShortenerController {
         // Validating the URL
         UrlValidator urlValidator = new UrlValidator(new String[]{"http", "https"});
         if (!urlValidator.isValid(url)) {
-            throw new RuntimeException("Invalid URL");
+            throw new InvalidURLException("Invalid URL");
         }
 
         // Process the URL on valid
