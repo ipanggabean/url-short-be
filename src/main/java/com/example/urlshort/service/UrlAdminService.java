@@ -16,17 +16,22 @@ public class UrlAdminService {
     @Autowired
     private UrlStoreRepository urlStoreRepository;
 
-    private int DEFAULT_PAGE_SIZE = 5;
-
     public Page<UrlDTO> findPage(Pageable pageable, String search) {
         Page<UrlStore> result;
 
         if (StringUtils.hasText(search)) {
-            result = urlStoreRepository.findByUrlContainingIgnoreCase(search, pageable);
+            result = urlStoreRepository.findByIsActiveTrueAndUrlContainingIgnoreCase(search, pageable);
         } else {
-            result = urlStoreRepository.findAll(pageable);
+            result = urlStoreRepository.findByIsActiveTrue(pageable);
         }
 
         return result.map(urlStore -> UrlDTOMapper.urlStoreToUrlDTO(urlStore));
+    }
+
+    public void disableById(String id) {
+        urlStoreRepository.findByIdAndIsActiveTrue(id).ifPresent(urlStore -> {
+            urlStore.setActive(false);
+            urlStoreRepository.save(urlStore);
+        });
     }
 }

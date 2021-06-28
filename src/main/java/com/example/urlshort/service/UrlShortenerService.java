@@ -28,8 +28,7 @@ public class UrlShortenerService {
     }
 
     public UrlStore getActiveById(final String id) {
-        return urlStoreRepository.findById(id)
-                .filter(UrlStore::isActive)
+        return urlStoreRepository.findByIdAndIsActiveTrue(id)
                 .filter(urlStore -> urlStore.getExpiredTime().isAfter(LocalDateTime.now()))
                 .orElseThrow(() -> new ShortURLInvalidException("Shortened URL is not valid"));
     }
