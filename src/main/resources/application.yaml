@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/url_short_db?useSSL=false&characterEncoding=UTF-8&createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/url_short_db?useSSL=false&characterEncoding=UTF-8&createDatabaseIfNotExist=true&serverTimezone=UTC%2B7&useLegacyDatetimeCode=false
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: password

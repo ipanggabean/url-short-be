@@ -31,7 +31,7 @@ public class ShortenerController {
         }
 
         // Process the URL on valid
-        UrlStore urlStore = urlShortenerService.makeShort(urlDTO.getUrl());
+        UrlStore urlStore = urlShortenerService.makeShort(urlDTO);
 
         return ResponseEntity.ok(UrlDTOMapper.urlStoreToUrlDTO(urlStore));
     }

@@ -1,5 +1,6 @@
 package com.example.urlshort.service;
 
+import com.example.urlshort.dto.UrlDTO;
 import com.example.urlshort.entity.UrlStore;
 import com.example.urlshort.exception.ShortURLInvalidException;
 import com.example.urlshort.repository.UrlStoreRepository;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 @Service
 @Slf4j
@@ -20,10 +22,10 @@ public class UrlShortenerService {
     @Autowired
     private UrlStoreRepository urlStoreRepository;
 
-    public UrlStore makeShort(String url) {
-        log.debug("Received URL to be shortened: {}", url);
+    public UrlStore makeShort(UrlDTO urlDTO) {
+        log.debug("Received URL to be shortened: {}", urlDTO.getUrl());
 
-        UrlStore urlStore = make(url);
+        UrlStore urlStore = make(urlDTO);
         return urlStoreRepository.save(urlStore);
     }
 
@@ -38,12 +40,12 @@ public class UrlShortenerService {
         return urlStoreRepository.save(urlStore);
     }
 
-    private UrlStore make(@NonNull String url) {
+    private UrlStore make(@NonNull UrlDTO urlDTO) {
         return UrlStore.builder()
-                .id(HashingUtil.hash(url))
-                .url(url)
+                .id(HashingUtil.hash(urlDTO.getUrl()))
+                .url(urlDTO.getUrl())
                 .hit(0)
-                .expiredTime(LocalDateTime.now().plusDays(DEFAULT_EXPIRATION_DAY))
+                .expiredTime(urlDTO.getExpiredTime() != null ? urlDTO.getExpiredTime() : LocalDateTime.now().plusDays(DEFAULT_EXPIRATION_DAY))
                 .isActive(true)
                 .build();
     }
