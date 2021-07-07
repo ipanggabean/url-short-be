@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(InvalidURLException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ResponseBody
-    public void handle(InvalidURLException e) {
-        log.error(e.getLocalizedMessage());
-    }
-
-    @ExceptionHandler(ShortURLInvalidException.class)
-    @ResponseStatus(HttpStatus.GONE)
-    @ResponseBody
-    public void handle(ShortURLInvalidException e) {
-        log.error(e.getLocalizedMessage());
-    }
+//    @ExceptionHandler(InvalidURLException.class)
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    @ResponseBody
+//    public void handle(InvalidURLException e) {
+//        log.error(e.getLocalizedMessage());
+//    }
+//
+//    @ExceptionHandler(ShortURLInvalidException.class)
+//    @ResponseStatus(HttpStatus.GONE)
+//    @ResponseBody
+//    public void handle(ShortURLInvalidException e) {
+//        log.error(e.getLocalizedMessage());
+//    }
 }
